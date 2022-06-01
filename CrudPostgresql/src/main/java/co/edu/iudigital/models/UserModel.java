@@ -76,4 +76,15 @@ public class UserModel {
         }
         return users;
     }
+    public void updateUser(String lastname, int id){
+        try{
+            String query = String.format("UPDATE users SET lastname='%s' WHERE id=%d", lastname, id);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            statement.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
